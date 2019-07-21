@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acn.mysb.demo.mapper.OrderMapper">
+
+    <resultMap id="OrderMap" type="com.acn.mysb.demo.entity.Order">
+        <result column="orderId" jdbcType="VARCHAR" property="orderId" />
+        <result column="clientId" jdbcType="INTEGER" property="clientId" />
+        <result column="orderDate" jdbcType="DATE" property="orderDate" />
+        <result column="quantity" jdbcType="INTEGER" property="quantity" />
+        <result column="comment" jdbcType="VARCHAR" property="comment" />
+    </resultMap>
+
+    <select id="getOrderById" resultType="com.acn.mysb.demo.entity.Order">
+        select * from myorder where orderId = #{orderId}
+    </select>
+    <insert id="insertOrder" parameterType="com.acn.mysb.demo.entity.Order">
+        insert into
+        myorder(orderId,clientId,orderDate,quantity,comment)
+        values
+        (#{orderId},#{clientId},#{orderDate},#{quantity},#{comment})
+    </insert>
+    <update id="updateOrder" parameterType="com.acn.mysb.demo.entity.Order">
+        update myorder
+        set comment = #{comment},clientId = #{clientId},orderDate = #{orderDate},quantity = #{quantity}
+        where orderId = #{orderId}
+    </update>
+    <delete id="deleteOrder">
+        delete from myorder where orderId = #{orderId}
+    </delete>
+    <select id="findList" resultType="com.acn.mysb.demo.entity.Order">
+        select * from myorder
+    </select>
+</mapper>
