@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.acn.mysb.demo.mapper.OrderMapper">
 
-    <resultMap id="OrderMap" type="com.acn.mysb.demo.entity.Order">
+    <resultMap id="OrderMap" type="com.acn.mysb.demo.entity.OrderSummary">
         <result column="orderId" jdbcType="VARCHAR" property="orderId" />
         <result column="clientId" jdbcType="INTEGER" property="clientId" />
         <result column="orderDate" jdbcType="DATE" property="orderDate" />
@@ -10,24 +10,38 @@
         <result column="comment" jdbcType="VARCHAR" property="comment" />
     </resultMap>
 
-    <select id="getOrderById" resultType="com.acn.mysb.demo.entity.Order">
-        select * from myorder where orderId = #{orderId}
+    <select id="getDetailsById">
+        select * from order_detail where order_id = #{orderId}
     </select>
-    <insert id="insertOrder" parameterType="com.acn.mysb.demo.entity.Order">
+    <select id="getDetailByKey" resultType="com.acn.mysb.demo.entity.OrderDetail">
+        select * from order_detail where order_id = #{orderId} and detail_no = #{detailNo}
+    </select>
+    <insert id="insertOrder" parameterType="com.acn.mysb.demo.entity.OrderSummary">
         insert into
-        myorder(orderId,clientId,orderDate,quantity,comment)
+        order_summary(id,user_id,zip,creator,updater)
         values
-        (#{orderId},#{clientId},#{orderDate},#{quantity},#{comment})
+        (#{id},#{userId},#{zip},#{creator},#{updater})
     </insert>
-    <update id="updateOrder" parameterType="com.acn.mysb.demo.entity.Order">
-        update myorder
-        set comment = #{comment},clientId = #{clientId},orderDate = #{orderDate},quantity = #{quantity}
-        where orderId = #{orderId}
+    <insert id="insertOrderDetail" parameterType="com.acn.mysb.demo.entity.OrderDetail">
+        insert into
+        order_detail(order_id,detail_no,product_id,warehouse_id,specify_warehouse_id,demand_count,
+                    allocated_count,unallocated_count,shipment_order_count,creator,updater)
+        values
+        (#{orderId},#{detailNo},#{productId},#{warehouseId},#{specifyWarehouseId},#{demandCount},
+        #{allocatedCount},#{unallocatedCount},#{shipmentOrderCount},#{creator},#{updater})
+    </insert>
+    <update id="updateOrderDetail" parameterType="com.acn.mysb.demo.entity.OrderDetail">
+        update order_detail
+        set demand_count = #{demandCount}
+        where order_id = #{orderId} and detail_no = #{detailNo}
     </update>
-    <delete id="deleteOrder">
-        delete from myorder where orderId = #{orderId}
+    <delete id="deleteOrderSummary" parameterType="com.acn.mysb.demo.entity.OrderSummary">
+        delete from order_summary where id = #{id}
     </delete>
-    <select id="findList" resultType="com.acn.mysb.demo.entity.Order">
-        select * from myorder
+    <delete id="deleteOrderDetail" parameterType="com.acn.mysb.demo.entity.OrderSummary">
+        delete from order_detail where order_id = #{id}
+    </delete>
+    <select id="getOrderListByUser" resultType="com.acn.mysb.demo.entity.OrderSummary">
+        select * from order_summary where user_id = #{userId}
     </select>
 </mapper>

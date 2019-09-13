@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acn.mysb.demo.mapper.StockMapper">
+
+    <select id="getStock" resultType="com.acn.mysb.demo.entity.Stock">
+        select * from Stock where product_id = #{productId} and warehouse_id = #{warehouseId}
+    </select>
+    <select id="getStockByProduct" resultType="com.acn.mysb.demo.entity.Stock">
+        select * from Stock where product_id = #{productId}
+    </select>
+    <update id="updateStock" parameterType="com.acn.mysb.demo.entity.Stock">
+        update Stock
+        set avaliable_count = #{avaliableCount},allocated_count = #{allocatedCount},unallocated_count = #{unallocatedCount}
+        where product_id = #{productId} and warehouse_id = #{warehouseId}
+    </update>
+
+</mapper>

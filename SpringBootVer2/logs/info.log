@@ -1,0 +1,21 @@
+21:08:26.338 [main] INFO  c.a.m.d.SpringBootVer2Application - Starting SpringBootVer2Application on DESKTOP-FAO89SE with PID 6484 (C:\zhibo.li\IdeaProjects\SpringBootVer2\target\classes started by arther1982 in C:\zhibo.li\IdeaProjects\SpringBootVer2) 
+21:08:26.347 [main] INFO  c.a.m.d.SpringBootVer2Application - No active profile set, falling back to default profiles: default 
+21:08:30.031 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.acn.mysb.demo]' package. Please check your configuration. 
+21:08:32.220 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http) 
+21:08:32.282 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+21:08:32.295 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.21] 
+21:08:32.623 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+21:08:32.624 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 6141 ms 
+21:08:33.054 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+21:08:33.305 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+21:08:33.697 [main] WARN  c.b.m.core.metadata.TableInfoHelper - Warn: Could not find @TableId in Class: com.acn.mysb.demo.entity.Stock. 
+21:08:34.180 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+21:08:34.702 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '' 
+21:08:34.711 [main] INFO  c.a.m.d.SpringBootVer2Application - Started SpringBootVer2Application in 9.73 seconds (JVM running for 12.593) 
+21:08:38.543 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+21:08:38.545 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+21:08:38.561 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 16 ms 
+21:08:39.338 [http-nio-8080-exec-1] INFO  c.a.m.d.s.Impl.OrderServiceImpl - insert into order_summary id=[300023] 
+21:08:39.461 [http-nio-8080-exec-1] INFO  c.a.m.d.s.Impl.OrderServiceImpl - insert into order_detail order_id=[300023] detail_no=[1001] 
+21:08:39.505 [http-nio-8080-exec-1] INFO  c.a.m.d.s.Impl.OrderServiceImpl - insert into order_detail order_id=[300023] detail_no=[1002] 
+21:08:39.580 [http-nio-8080-exec-1] INFO  c.a.m.d.s.Impl.OrderServiceImpl - insert into order_detail order_id=[300023] detail_no=[1003] 

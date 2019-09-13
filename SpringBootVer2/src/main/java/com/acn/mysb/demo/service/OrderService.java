@@ -1,40 +1,16 @@
 package com.acn.mysb.demo.service;
 
-import com.acn.mysb.demo.entity.Order;
-import com.acn.mysb.demo.mapper.OrderMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.acn.mysb.demo.entity.OrderDetail;
+import com.acn.mysb.demo.entity.OrderSummary;
 
-import javax.annotation.Resource;
+import java.util.List;
 
-@Service
-public class OrderService {
-    @Autowired
-    @Resource
-    private OrderMapper om;
+public interface OrderService {
 
-    public Order getOrderById(String orderId){
-        return om.getOrderById(orderId);
-    }
+    public void insertOrder(OrderSummary orderSummary);
 
-    public void insertOrder(Order order){
-        om.insertOrder(order);
-    }
+    public String updateOrderDetail(List<OrderDetail> orderDetails);
 
-    public void updateOrder(Order order){
-        om.updateOrder(order);
-    }
-
-    public void deleteOrder(String orderId){
-        om.deleteOrder(orderId);
-    }
-
-    public IPage<Order> findList(Order order, int page, int pageSize){
-        Page<Order> p = new Page<>(page, pageSize);
-        p.setRecords(om.findList(p, order));
-        return p;
-    }
+    public String deleteOrder(OrderSummary orderSummary);
 
 }

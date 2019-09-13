@@ -7,6 +7,9 @@ spring:
     username: root
     password: admin
 
+logging:
+  config: classpath:logback.xml
+
 mybatis-plus:
   mapper-locations: classpath:mapping/*.xml
   typeAliasesPackage: com.acn.mysb.demo.entity
